@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Maps Finder</title>
+
+		<!-- Sets initial viewport load and disables zooming	-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!-- Include the base Snap.js CSS -->
+		<link rel="stylesheet" href="css/snap.css">
+
+		<!-- Include the compiled Ratchet CSS -->
+		<link rel="stylesheet" href="css/ratchet.css">
+		
+		<!-- Include the app CSS -->
+		<link rel="stylesheet" href="css/app.css">
+
+        <link rel="stylesheet" type="text/css" href="css/transition.min.css" />
+		
+		<link href="css/icomoon.css" rel="stylesheet" />
+
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&libraries=weather,panoramio"></script>
+		<script type="text/javascript" src="js/maps.js"></script>
+        <script type="text/javascript" src="js/zepto.min.js"></script>
+        <script type="text/javascript" src="js/transition.min.js"></script>
+		<script type="text/javascript" src="js/ratchet.js"></script>
+
+
+</head>
+<body>
+
+<!-- SIDE LEFT MENU -->
+<div class="snap-drawers">
+	<div class="snap-drawer snap-drawer-left" id="left-drawer">
+   		<div id="menu">
+        	<div class="scrollable">
+            	<ul>
+               		<li id="li_page_home" class="active"><span aria-hidden="true" class="icon-home-2"></span><a id="home" transition="side" href="#page_home"> Home</a></li>
+					<li id="li_page_location_map"><span aria-hidden="true" class="icon-chris-spittles-geo-location"></span><a id="location-map" transition="side" href="#page_location_map">Location Map</a></li>
+               		<li id="li_page_nearby"><span aria-hidden="true" class="icon-checkin"></span><a id="nearby" transition="side" href="#page_nearby"> Nearby </a></li>
+               		<li id="li_page_location_list"><span aria-hidden="true" class="icon-maps"></span><a id="location-list" transition="side" href="#page_location_list">Locations List</a></li>
+                	<li id="li_page_save_location"><span aria-hidden="true" class="icon-bookmarks"></span><a id="save-location" transition="side" href="#page_save_location">Save My Location</a></li>
+					<li id="copy">
+                    	<p>Created By Rizal Saleh</p>
+                    	Maps Finder &copy; 2013
+                	</li>
+
+            	</ul>
+        	</div>
+    	</div>
+	</div>
+</div>
+<!-- END SIDE LEFT MENU -->
+
+<!-- SIDE RIGHT MENU -->
+<div class="snap-drawer snap-drawer-right" id="right-drawer">
+<ul class="list">
+  <li class="list-divider">Nearby Setting</li>
+  <li>
+  	<div class="fs1" aria-hidden="true" data-icon="&#xf20c;"></div>
+    Distances Units
+	<div class="toggle-box">
+		<label for="toggle-nearby-distances" class="toggle-label">KM &nbsp;&nbsp; MIL</label>
+		<input type="checkbox" value="1" id="toggle-nearby-distances" class="toggle-control" />
+	</div>
+  </li>
+  <li class="list-divider">Maps Layer Setting</li>
+  <li>
+  	<div class="fs1" aria-hidden="true" data-icon="&#xf22a;"></div>
+    Traffic Layer
+	<div class="toggle-box">
+		<label for="toggle-traffic-layer" class="toggle-label">ON &nbsp;&nbsp; OFF</label>
+		<input type="checkbox" value="1" id="toggle-traffic-layer" class="toggle-control" />
+	</div>
+  </li>
+  <li>
+  <div class="fs1" aria-hidden="true" data-icon="&#xe05b;"></div>
+    Weather Layer
+	<div class="toggle-box">
+		<label for="toggle-weather-layer" class="toggle-label">ON &nbsp;&nbsp; OFF</label>
+		<input type="checkbox" value="1" id="toggle-weather-layer" class="toggle-control" />
+	</div>
+  </li>
+  <li>
+  <div class="fs1" aria-hidden="true" data-icon="&#xf23e;"></div>
+    Transit Layer
+	<div class="toggle-box">
+		<label for="toggle-transit-layer" class="toggle-label">ON &nbsp;&nbsp; OFF</label>
+		<input type="checkbox" value="1" id="toggle-transit-layer" class="toggle-control" />
+	</div>
+  </li>
+  <li>
+  <div class="fs1" aria-hidden="true" data-icon="&#x2b;"></div>
+    Panoramio Layer
+	<div class="toggle-box">
+		<label for="toggle-panoramio-layer" class="toggle-label">ON &nbsp;&nbsp; OFF</label>
+		<input type="checkbox" value="1" id="toggle-panoramio-layer" class="toggle-control" />
+	</div>
+  </li>
+  <li>
+  <div class="fs1" aria-hidden="true" data-icon="&#x3a;"></div>
+    Bike Layer
+	<div class="toggle-box">
+		<label for="toggle-bike-layer" class="toggle-label">ON &nbsp;&nbsp; OFF</label>
+		<input type="checkbox" value="1" id="toggle-bike-layer" class="toggle-control" />
+	</div>
+  </li>
+</ul>
+
+
+	</div>
+<!-- END SIDE RIGHT MENU -->
+
+<!-- MAIN -->
+<div id="content" class="snap-content">
+	<!-- HEADER -->
+	<header class="bar-title">
+		<button class="button icon-list-2 toggle-left"></button>
+		<h1 class="title">Maps Finder</h1>
+		<button class="button icon-uniF00F toggle-right" value="off"></button>
+	</header>
+	<!-- END HEADER -->
+	
+	<!-- CONTENT -->
+	<div class="content">
+		<!-- LOADING -->
+		<div class="loading" align="center">
+			<div class="circle"></div>
+			<div class="circle1"></div>
+		</div>
+		<!-- END LOADING -->
+	
+		<!-- PAGE HOME -->
+		<div id="page_home" data-role="page">
+		<div class="wrapper">
+			<div class="slider" data-snap-ignore="true">
+      			<ul>
+      			</ul>
+    		</div>
+			
+ 			<ul class="list">
+      			<li>
+					<a id="nearby" transition="side" href="#page_nearby">
+						<div class="fs1" aria-hidden="true" data-icon="&#xe002;"></div>
+          				<strong>Nearby</strong>
+          				<span class="chevron"></span>
+					</a>
+      			</li>
+				<li>
+					<a id="location-map" transition="side" href="#page_location_map">
+						<div class="fs1" aria-hidden="true" data-icon="&#xe008;"></div>
+          				<strong>Location Map</strong>
+          				<span class="chevron"></span>
+					</a>
+      			</li>
+      			<li>
+					<a id="location-list" transition="side" href="#page_location_list">
+						<div class="fs1" aria-hidden="true" data-icon="&#xf209;"></div>
+         				<strong>Location List</strong>
+          				<span class="chevron"></span>
+					</a>
+      			</li>
+      			<li>
+					<a id="save-location" transition="side" href="#page_save_location">
+						<div class="fs1" aria-hidden="true" data-icon="&#xe02c;"></div>
+         				<strong>Save My Location</strong>
+          				<span class="chevron"></span>
+					</a>
+      			</li>
+			</ul>
+		</div>
+		</div>
+		<!-- END PAGE HOME -->
+		
+		
+		<!-- PAGE LOCATION LIST -->
+		<div id="page_location_list" data-role="page" data-title="Page Location List">
+			<div class="wrapper">
+					<ul id="list-category" class="list">
+					</ul>
+			</div>
+		</div>
+		<!-- END PAGE LOCATION LIST -->
+		
+		<!-- PAGE LOCATION LIST DETAIL -->
+		<div id="page_detail" data-role="page" data-title="Page Detail">
+			<div class="bar-standard bar-header-secondary">
+				<input type="search" id="search-list" placeholder="Search..">
+				<input type="hidden" id="category-id">
+			</div>
+			<div class="wrapper-bar">
+				<ul id="list-detail" class="list">
+				</ul>
+			</div>
+		</div>
+		<!-- END PAGE LOCATION LIST DETAIL -->
+		
+		<!-- PAGE NEARBY -->
+		<div id="page_nearby" data-role="page" data-title="Page Nearby">
+			<div class="wrapper">
+				<ul id="list-nearby" class="list">
+				</ul>
+			</div>
+		</div>
+		<!-- END PAGE NEARBY -->
+
+		<!-- PAGE SAVE LOCATION -->
+		<div id="page_save_location" data-role="page" data-title="Page Save Location">
+ 			<div class="bar-standard bar-header-secondary">
+  				<a class="button-block" href="#page_add_location">Check In</a>
+			</div>
+			<div class="wrapper-bar">
+				<ul id="list-save-location" class="list">
+				</ul>
+			</div>
+		</div>
+		<!-- END PAGE SAVE LOCATION -->
+		
+		<!-- PAGE DETAIL SAVE LOCATION -->
+		<div id="page_detail_save_location" data-role="page" data-title="Page Detail Save Location">
+			<div class="wrapper">
+				<div class="slider" data-snap-ignore="true">
+      				<ul>
+      				</ul>
+    			</div>
+			
+  				<div class="input-group">
+    				<div class="input-row">
+      					<label>Date</label>
+      					<div id="date-save-location"></div>
+    				</div>
+    				<div class="input-row">
+     		 			<label>Location</label>
+     					<div id="address-save-location"></div>
+    				</div>
+    				<div class="input-row">
+      					<label>Title</label>
+   			 			<div id="title-save-location"></div>
+    				</div>
+    				<div class="input-row">
+      					<label>Description</label>
+     					<div id="desc-save-location"></div>
+    				</div>
+  				</div>
+			<div class="content-padded">
+				<div id="button-save-location"></div>
+			</div>
+			</div>
+		</div>
+		<!-- END PAGE DETAIL SAVE LOCATION -->
+		
+		
+		<!-- PAGE ADD LOCATION -->
+		<div id="page_add_location" data-role="page" data-title="Page Save Location">
+			<div class="content-padded">
+				<form>
+  					<input type="text" id="form-title" placeholder="Title">
+  					<textarea rows="5" id="form-desc" placeholder="Description"></textarea>
+  					<a id="form-add" class="button-positive button-block" href="#page_save_location">Add Entry</a>
+					<span id="show-location-address" class="count">No Detect Location</span>
+				</form>
+			</div>
+		</div>
+		<!-- END PAGE ADD LOCATION -->
+		
+		<!-- PAGE LOCATION MAP-->			
+		<div id="page_location_map" data-role="page" data-title="Page Location Map">
+			<div id="map_canvas" style="width: 100%;" data-snap-ignore="true"></div>
+		</div>
+		<!-- END PAGE LOCATION MAP-->	
+		
+		<!-- PAGE DETAIL -->
+		<div id="page_show_location" data-role="page">
+			<nav class="bar-standard">
+ 	 			<ul class="segmented-controller">
+    				<li>
+      					<a id="btn-show-map" href="#">Show Map</a>
+    				</li>
+    				<li>
+      					<a id="btn-show-street" href="#">Street View</a>
+    				</li>
+    				<li>
+      					<a id="btn-show-directions" href="#">Directions</a>
+    				</li>
+    				<li>
+      					<a id="btn-show-route" href="#">Route</a>
+    				</li>
+  				</ul>
+			</nav>
+			<div class="wrapper-bar">
+				<div class="slider" data-snap-ignore="true">
+      			<ul id="show-images">
+      			</ul>
+    		</div>
+			<div class="input-group">
+    				<div class="input-row">
+      					<label>Category</label>
+      					<div id="title-show-category"></div>
+    				</div>
+    				<div class="input-row">
+     		 			<label>Name</label>
+     					<div id="title-show-name"></div>
+    				</div>
+    				<div class="input-row">
+      					<label>Phone</label>
+   			 			<div id="title-show-phone"></div>
+    				</div>
+    				<div class="input-row">
+      					<label>Url</label>
+   			 			<div id="title-show-url"></div>
+    				</div>
+    				<div class="input-row">
+      					<label>Address</label>
+     					<div id="title-show-address"></div>
+    				</div>
+    				<div class="input-row">
+      					<label>Description</label>
+     					<div id="title-show-desc"></div>
+    				</div>
+  			</div>
+		</div>
+		</div>
+		<!-- END PAGE DETAIL -->
+		
+		<!-- PAGE LOCATION ROUTE -->			
+		<div id="page_location_route" data-role="page" data-title="Page Location Route">
+			<div class="content-padded" data-snap-ignore="true">
+				<div class="wrapper-route">
+					<div id="directions-route"></div>
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE LOCATION ROUTE-->	
+	</div>
+	<!-- END CONTENT -->	
+</div>	
+<!-- END MAIN -->
+
+
+<script type="text/javascript" src="js/snap.min.js"></script>
+<script type="text/javascript">
+var settingArray = ["toggle-traffic-layer","toggle-weather-layer","toggle-panoramio-layer","toggle-transit-layer","toggle-bike-layer","toggle-nearby-distances"];
+
+
+// respon maps button
+				
+window.onpopstate = function(event)
+{
+  
+    var hash = window.location.hash;
+	$('.scrollable ul li').removeClass("active");
+	//$('.loading').show();
+
+    if (hash === "#page_home") {
+		$("#li_page_home").addClass("active");
+		$('.loading').hide();
+	} else if (hash === "#page_location_map") {
+		$("#li_page_location_map").addClass("active");
+		setTimeout('init()',500);
+	} else if (hash === "#page_nearby") {
+		$("#li_page_nearby").addClass("active");
+		myGeoloc();
+		getNearby();
+	} else if (hash === "#page_location_list") {
+		$("#li_page_location_list").addClass("active");
+		getLocationCategory();
+	} else if (hash === "#page_show_location") {
+		$('.scrollable ul li').removeClass("active");
+	} else if (hash === "#page_detail") {
+		$("#li_page_location_list").addClass("active");
+	} else if (hash === "#page_save_location") {
+		$("#li_page_save_location").addClass("active");
+		listMyLocation();
+	} else if (hash === "#page_detail_save_location") {
+		$("#li_page_save_location").addClass("active");
+	} else if (hash === "#page_add_location") {
+		$("#li_page_save_location").addClass("active");
+		$('#page_add_location').find('form')[0].reset();
+	} else {
+		// default link active
+		$("#li_page_home").addClass("active");
+		$('.loading').hide();
+	}
+};
+
+	
+	$("#form-add").bind("click",function(){		
+		addMyLocation();
+	});
+
+
+for (var i = 0; i < settingArray.length; i++) {
+
+	getSetting = localStorage.getItem(settingArray[i]);
+	if(getSetting == "true"){
+		$('#'+settingArray[i]).prop("checked", true);
+	}
+
+}
+
+$('#search-list').keyup(function(event) {
+	getFilterList();
+});
+
+$('.toggle-control').bind('click', function(){
+
+	var id = $(this).attr('id');
+	
+	if($(this).prop('checked')){
+
+  		localStorage.setItem(id, "true");
+	}else{
+	
+		localStorage.setItem(id, "false");
+	}
+	
+	init();
+	getNearby();
+});
+
+ 
+function jqUpdateSize(){
+    // Get the dimensions of the viewport
+      vpw 		= $(window).width(); 
+      vph 		= $(window).height() - 100;
+	  vph_full  = $(window).height() - 45;
+	  vph_route = $(window).height() - 60;
+	  
+	 
+     $('.wrapper').css({'height': vph_full + 'px'});
+	 $('.wrapper-bar').css({'height': vph + 'px'});
+	 $('.wrapper-route').css({'height': vph_route + 'px'});
+	 $('#map_canvas').css({'height': vph_full + 'px'});
+};
+$(document).ready(jqUpdateSize);    // When the page first loads
+$(window).resize(jqUpdateSize);     // When the browser changes size
+
+		// Instance
+		snapper = new Snap({
+                element: document.getElementById('content')
+                //disable: 'right'
+            });
+		
+		UpdateDrawers = function(){
+			var state = snapper.state(),
+				towards = state.info.towards,
+				opening = state.info.opening;
+		};
+		
+		snapper.on('drag', UpdateDrawers);
+		snapper.on('animating', UpdateDrawers);
+		snapper.on('animated', UpdateDrawers);
+		
+		$('.toggle-left').bind('click', function(){
+			
+			snapper.open('left');
+		});
+				
+		$('.toggle-right').bind('click', function(){
+		
+			 if($('.toggle-right').val() == "off"){
+        		snapper.open('right');
+				$('.toggle-right').val("on");
+    		 }else{
+       			snapper.close('right');
+				$('.toggle-right').val("off");
+			}
+			
+		});
+				
+		$('.scrollable ul li').bind('click', function(){
+
+			snapper.close('left');
+
+		});	
+
+	</script>
+
+	
+
+    </body>
+</html>

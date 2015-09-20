@@ -1,0 +1,518 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DengueTective</title>
+
+		<!-- Sets initial viewport load and disables zooming	-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="white">
+
+		<!-- Include the base Snap.js CSS -->
+		<link rel="stylesheet" href="css/snap.css">
+
+		<!-- Include the compiled Ratchet CSS -->
+		<link rel="stylesheet" href="css/ratchet.css">
+		
+		<!-- Include the app CSS -->
+		<link rel="stylesheet" href="css/app.css">
+
+        <link rel="stylesheet" type="text/css" href="css/transition.min.css" />
+		
+		<link href="css/icomoon.css" rel="stylesheet" />
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/maps.js"></script>
+        <script type="text/javascript" src="js/zepto.min.js"></script>
+        <script type="text/javascript" src="js/transition.min.js"></script>
+		<script type="text/javascript" src="js/ratchet.js"></script>
+
+</head>
+<body>
+	<!-- SIDEBAR LEFT MENU -->
+	<div class="snap-drawers">
+		<div class="snap-drawer snap-drawer-left" id="left-drawer">
+	   		<div id="menu">
+	        	<div class="scrollable">
+	            	<ul>
+	               		<li id="li_page_home" class="active">
+							<span aria-hidden="true" class="icon-home-2"></span>
+							<a id="home" transition="side" href="#page_home"> Home</a>
+						</li>
+						<li id="li_page_info_dengue">
+							<span aria-hidden="true" class="icon-books"></span>
+							<a id="info-dengue" transition="side" href="#page_info_dengue">Info Dengue</a>
+						</li>
+						<li id="li_page_test_form">
+							<span aria-hidden="true" class="icon-camera"></span>
+							<a id="test-form" transition="side" href="#page_test_form">Test Your Kit</a>
+						</li>
+	               		<li id="li_page_help">
+							<span aria-hidden="true" class="icon-question"></span>
+							<a id="help" transition="side" href="#page_help"> Help </a>
+						</li>
+	               		<li id="li_page_about">
+							<span aria-hidden="true" class="icon-info-2"></span>
+							<a id="about" transition="side" href="#page_about">About</a>
+						</li>
+	                	<li id="li_exit">
+							<span aria-hidden="true" class="icon-exit"></span>
+							<a id="exit" onClick="exitFromApp()" transition="side" href="#">Exit</a>
+						</li>
+						<li id="copy">
+	                    	DengueTective &copy; 2015
+	                	</li>
+	            	</ul>
+	        	</div>
+	    	</div>
+		</div>
+	</div>
+	<!-- END SIDEBAR LEFT MENU -->
+
+	<!-- MAIN -->
+	<div id="content" class="snap-content">
+		<!-- HEADER -->
+		<header class="bar-title">
+			<button class="button icon-list-2 toggle-left"></button>
+			<h1 class="title">DengueTective</h1>
+		</header>
+		<!-- END HEADER -->
+		
+		<!-- CONTENT -->
+		<div class="content">
+			<!-- PAGE HOME -->
+			<div id="page_home" data-role="page">
+			<div class="wrapper">
+				<div class="slider" data-snap-ignore="true">
+	      			<ul>
+	      			<img src="">
+	      			<img src="img/slide.png" alt="rss" style="display: block; margin: 0 auto">
+	      			<img alt="">      			
+	      			</ul>
+	    		</div>
+				
+	 			<ul class="list">
+					<li>
+						<a id="info-dengue" transition="side" href="#page_info_dengue">
+							<div class="fs1" aria-hidden="true" data-icon="&#x54;"></div>
+	          				<strong>Info Dengue</strong>
+	          				<span class="chevron"></span>
+						</a>
+	      			</li>
+	      			<li>
+						<a id="test-kit" transition="side" href="#page_test_form">
+							<div class="fs1" aria-hidden="true" data-icon="&#x21;"></div>
+	         				<strong>Test Your Kit</strong>
+	          				<span class="chevron"></span>
+						</a>
+	      			</li>
+				</ul>
+			</div>
+			</div>
+			<!-- END PAGE HOME -->
+		
+			<!-- PAGE HELP -->
+			<div id="page_help" data-role="page" data-title="Page Help" class="wrapper-bar">
+				<div data-role="content" style="text-align:justify" class="scrollable">
+		            <br>
+		            <p><strong>User's Guide</strong>
+		            <br>
+					<br>This application is designed by iGEM UB-Indonesia for supporting the interpretation of detection results for dengue fever from diagnostic kit. Everyone can find more about dengue fever with educative and testing features. This is the steps to test your kit :
+					
+					<br>1. Make sure that you have De(ngue)tective kit
+					<br>2. Follow the kit instruction
+					<br>3. To interpret detection result from kit, choose test menu :
+					<br>
+					<img src="img/1.png" alt="rss" style="display: block; margin: 0 auto">
+					<br>firstly, you have to fill your personal data and continue capturing your kit.
+					<br>
+					<img src="img/2.png" alt="rss" style="display: block; margin: 0 auto">
+					<br>4. Wait a few moment and you will get the result
+					<br>5. In Addition, to know more about dengue fever, choose Info Dengue
+					<br>
+					<img src="img/3.png" alt="rss" style="display: block; margin: 0 auto">
+					<br>Notice : this app still beta version, so the accurate result still less. 
+					</p>
+        		</div>
+			</div>
+			<!-- END PAGE HELP -->
+
+			<!-- PAGE ABOUT -->
+			<div id="page_about" data-role="page" data-title="Page About" class="wrapper-bar">
+				<div data-role="content" style="text-align:justify" class="scrollable">
+					<br>
+					<p>
+					<br>
+					<img src="img/slide.png" alt="rss" style="display: block; margin: 0 auto">
+					<br><br>
+					This application is designed by iGEM UB-Indonesia for supporting the interpretation of detection results for dengue fever from diagnostic kit. Everyone can find more about dengue fever with educative and testing features. This application is aimed to help reader to know early about dengue fever, starting from its overview, symptoms until suggestion toward dengue-suspicion finding, thus patient can get early treatment before it is too late.
+					<br>
+					<br>
+					Supported by :
+					<br><br>
+					<img src="img/sponsor.png" alt="rss">
+					<br>
+					Our Partners :
+					<br><br>
+					<img src="img/mitra.png" alt="rss">
+					<br>
+					Media Partner :
+					<br>
+					<img src="img/media.png" alt="rss">
+					</p>
+				</div>	
+			</div>
+			<!-- END PAGE ABOUT -->
+
+			<!-- PAGE INFO -->
+			<div id="page_info_dengue" data-role="page" data-title="Page Info">
+				<div data-role="content" style="text-align:justify" class="scrollable">
+					<br>
+					<p><strong>About Dengue</strong></p>
+					<br>
+					<ul class="list">
+						<li>
+							<a id="overview" transition="side" href="#page_overview">
+								<div class="fs1" aria-hidden="true" data-icon="&#x48;"></div>
+		          				<strong>Overview</strong>
+		          				<span class="chevron"></span>
+							</a>
+		      			</li>
+		      			<li>
+							<a id="symptoms" transition="side" href="#page_symptoms">
+								<div class="fs1" aria-hidden="true" data-icon="&#xf20e;"></div>
+		         				<strong>Symptoms</strong>
+		          				<span class="chevron"></span>
+							</a>
+		      			</li>
+		      			<li>
+							<a id="grading" transition="side" href="#page_grading">
+								<div class="fs1" aria-hidden="true" data-icon="&#xf250;"></div>
+		         				<strong>Grading Dengue Fever</strong>
+		          				<span class="chevron"></span>
+							</a>
+		      			</li>
+		      			<li>
+							<a id="suggestion" transition="side" href="#page_suggestion">
+								<div class="fs1" aria-hidden="true" data-icon="&#xf26c;"></div>
+		          				<strong>Suggestion</strong>
+		          				<span class="chevron"></span>
+							</a>
+		      			</li>
+		      			<li>
+							<a id="prevention" transition="side" href="#page_prevention">
+								<div class="fs1" aria-hidden="true" data-icon="&#x52;"></div>
+		         				<strong>Prevention</strong>
+		          				<span class="chevron"></span>
+							</a>
+		      			</li>
+					</ul>
+				</div>
+			</div>
+			<!-- END PAGE INFO -->
+
+			<!-- PAGE Overview -->
+			<div id="page_overview" data-role="page" class="wrapper-bar">
+				<div data-role="content" style="text-align:justify" class="scrollable">
+					<br>
+					<p><strong>Overview</strong>
+					<br>
+					<br>
+					Dengue fever is a disease with sudden high fever because dengue virus infection brought by mosquito as vector. Dengue fever could fall into the dangerous event, which going to be dengue hemmorhagic fever, with warning sign like shortness of breath, vomiting, delirium, and so on.
+					</p>
+				</div>
+			</div>			
+			<!-- END PAGE Overview -->
+
+			<!-- PAGE Symptoms -->
+			<div id="page_symptoms" data-role="page" class="wrapper-bar">
+				<div data-role="content" style="text-align:justify" class="scrollable">
+					<br>
+					<p><strong>Symptoms</strong>
+					<br>
+					<br>•	Sudden high fever
+					<br>•	Severe headaches	
+					<br>•	Pain behind the eyes
+					<br>•	Severe joint and muscle pain
+					<br>•	Fatigue
+					<br>•	Nausea and Vomiting
+					<br>•	Skin rash, which appears two to five days after the onset of fever
+					<br>•	Mild bleeding (such a nose bleed, bleeding gums, or easy bruising)
+					<br><br>
+					<p><strong>Warning Signs  to be Dengue Hemmorhagic Fever</strong>
+					<br><br>
+					The initial phase of dengue hemorrhagic fever is similar to that of dengue fever and other febrile viral illnesses. Usually after 3 days, which is fever would go down, signs of plasma leakage appear, along with the development of hemorrhagic symptoms. The symptoms such as:
+					<br>
+					<br>•	Bleeding from sites of trauma
+					<br>•	Abdominal Pain	
+					<br>•	Seizure
+					<br>•	Decrease of consciousness
+					<br>•	Restlessness
+					<br>•	Circulatory failure
+				</div>
+			</div>			
+			<!-- END PAGE Symptoms -->
+
+			<!-- PAGE Grading -->
+			<div id="page_grading" data-role="page" class="wrapper-bar">
+				<div data-role="content" style="text-align:justify" class="scrollable">
+					<br>
+					<p>
+					<br><strong>Grade 1 (Dengue Fever)</strong>
+					<br>•	High Fever
+					<br>•	Low Leucocyte	
+					<br>•	Confusion
+					<br>•	Low Trombosit
+					<br>•	Low Hemoglobin
+					<br>
+					<br><strong>Grade 2 (Dengue Hemmorhagic Fever)</strong>
+					<br>
+					<br>•	High Fever
+					<br>•	Low Leucocyte
+					<br>•	Confusion
+					<br>•	Low Trombosit
+					<br>•	Low Hemoglobin
+					<br>•	Sorethroat
+					<br>•	Ptechiae
+					<br>•	Pain behind eye
+					<br>•	Nausea & Vomiting
+					<br>•	Gingival bleeding
+					<br>•	Nosebleed
+					<br>•	Abdominal Colic
+					<br>
+					<br><strong>Grade 3 (Compensated Dengue Shock Syndrome)</strong>
+					<br>
+					<br>•	High Fever
+					<br>•	Low Leucocyte
+					<br>•	Confusion
+					<br>•	Low Trombosit
+					<br>•	Low Hemoglobin
+					<br>•	Sorethroat
+					<br>•	Ptechiae
+					<br>•	Pain behind eye
+					<br>•	Nausea & Vomiting
+					<br>•	Gingival bleeding
+					<br>•	Nosebleed
+					<br>•	Joint pain
+					<br>•	Muscle pain
+					<br>•	Anxiety
+					<br>•	Hypotension (&#60;100/60 mmHg)
+					<br>
+					<br><strong>Grade 4 (Uncompensated Dengue Shock Syndrome)</strong>
+					<br>
+					<br>•	High Fever
+					<br>•	Low Leucocyte
+					<br>•	Confusion
+					<br>•	Low Trombosit
+					<br>•	Low Hemoglobin
+					<br>•	Sorethroat
+					<br>•	Ptechiae
+					<br>•	Pain behind eye
+					<br>•	Nausea & Vomiting
+					<br>•	Gingival bleeding
+					<br>•	Nosebleed
+					<br>•	Joint pain
+					<br>•	Muscle pain
+					<br>•	Anxiety
+					<br>•	Hypotension (&#60;100/60 mmHg)
+					<br>•	Shock 
+					<br>•	Weak pulse
+					<br>•	Blood pressure cannot be measured
+					<br>•	Rapid breathing
+					<br>
+				</div>
+			</div>			
+			<!-- END PAGE Grading -->
+
+			<!-- PAGE Suggestion -->
+			<div id="page_suggestion" data-role="page" class="wrapper-bar">
+				<div data-role="content" style="text-align:justify" class="scrollable">
+					<br>
+					<p><strong>Suggestion</strong>
+					<br>
+					<br>
+					If there are dengue fever symptoms above, first things to remember is BE AWARE of warning signs. Early detection of symptoms and warning signs would imply to the prognosis of patient in future. Usually at fever day 1-3 the body temperature will raise high, and go down at day 4-6 which seems to be cured, but actually it turns to critical phase which the patient tends to fall into critical event which shows any warning signs. If the fever go down after antipiretic drugs given, but go high again after several times at day 1-3, it highly suspected as dengue fever, clinically. If a suspicion toward dengue is high or there is any warning sign, please go directly to hospital in order to get proper medication and observation toward dehydration and circulatory failure.
+					</p>
+				</div>
+			</div>			
+			<!-- END PAGE Suggestion -->
+
+			<!-- PAGE Prevention -->
+			<div id="page_prevention" data-role="page" class="wrapper-bar">
+				<div data-role="content" style="text-align:justify" class="scrollable">
+					<br>
+					<p><strong>Prevention</strong>
+					<br>
+					<br>
+					Those who have experienced prior dengue fever, or even the neighbor approximately 300 m after the infected house, are important to avoid mosquito bites, including the use of appropriate mosquito repellants and peridomestic vector control by sleeping-net. The travelers are also important to do so, when traveling to dengue-endemic areas.
+					</p>
+				</div>
+			</div>			
+			<!-- END PAGE Prevention -->
+
+			<!-- PAGE TEST FORM -->
+			<div id="page_test_form" data-role="page" data-title="Page Form" class="wrapper-bar">
+				<div data-role="content">
+		        	<br>
+		        	To continue, you have to complete this form.
+		        	<br><br>
+		        	<form id="form_dengue" class="scrollable">
+		        		<div>
+				        	<label for="input-ID">ID Number : </label>
+							<input type="text" name="id_num" id="id_number" value="" placeholder="Input your ID Number">
+						</div>
+						<div>
+							<label for="input-name">Name : </label>
+							<input type="text" name="name" id="name" value="" placeholder="Input your name">
+						</div>
+						<div>
+							<label for="select-prov" class="select">Province :</label>
+							<select name="select-choice-a" id="prov" data-native-menu="false">
+							    <option>Your Province</option>
+							    <option value="east">Jawa Timur</option>
+							    <option value="central">Jawa Tengah</option>
+							    <option value="west">Jawa Barat</option>
+							</select>
+						</div>
+						<div>
+							<!-- <a href="#test" id="submit" name="submit" type="button" class="ui-shadow ui-btn ui-corner-all" id="snapPicture">Continue</a> -->
+							<a id="submit" class="button-positive button-block" href="#page_test">Continue</a>
+							<!-- <button id="submit">Continue</button> -->
+						</div>
+					</form>
+					<!-- <script type="text/javascript" src="js/db.js"></script> -->
+					<script type="text/javascript">
+						// Generic error callback for db transactions
+						var errCallback = function(){
+							alert("Oh noes! There haz bin a database error!");
+						}
+					
+						// Open / initialise the db - this will fail in browsers like Firefox & IE
+						var db = openDatabase("dengue", "1.0", "Dengue Database", 32678);
+					 
+						db.transaction(function(transaction){
+							transaction.executeSql("CREATE TABLE IF NOT EXISTS record (" +
+								"id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+								"id_number INTEGER NOT NULL," +
+								"name TEXT NOT NULL ," +
+								"prov TEXT NOT NULL);");
+						});
+					
+						// This is the SAVE function
+						var saveWinkle = function(id_number, name, prov, successCallback){
+							db.transaction(function(transaction){
+								transaction.executeSql(("INSERT INTO record (id_number, name, prov) VALUES (?, ?, ?);"), 
+								[id_number, name, prov], function(transaction, results){successCallback(results);}, errCallback);
+							});
+						};
+					
+						// Document ready event. Time for some subversive injection,
+						$(function(){
+							var form = $("form_dengue");
+																		 
+							// Override the default form submit in favour of our code
+							form.submit(function(event){
+								event.preventDefault();
+								saveWinkle($('#id_number').val(), $('#name').val(), $('#prov').val(), function(){
+									alert($('#id_number').val() + "'s data has been saved!");
+								})
+							});
+						});
+					</script>
+				</div>
+			</div>
+
+			<!-- PAGE TEST INPUT -->
+			<div id="page_test" data-role="page" data-title="Page Test Camera">
+
+				<script type="text/javascript" charset="utf-8">
+					var pictureSource;   // picture source
+				    var destinationType; // sets the format of returned value
+
+				    // Wait for device API libraries to load
+				    document.addEventListener("deviceready",onDeviceReady,false);
+
+				    // device APIs are available
+				    function onDeviceReady() {
+				        pictureSource=navigator.camera.PictureSourceType;
+				        destinationType=navigator.camera.DestinationType;
+				    }
+
+				    // Called when a photo is successfully retrieved
+				    function onPhotoDataSuccess(imageData) {
+				      var smallImage = document.getElementById('smallImage');
+
+				      // Unhide image elements
+				      smallImage.style.display = 'block';
+
+				      // Show the captured photo
+				      // The in-line CSS rules are used to resize the image
+
+				      smallImage.src = "data:image/jpeg;base64," + imageData;
+				    }
+
+				    // Called when a photo is successfully retrieved
+				    function onPhotoURISuccess(imageURI) {
+				      // Uncomment to view the image file URI
+				      // console.log(imageURI);
+
+				      // Get image handle
+				      var largeImage = document.getElementById('largeImage');
+
+				      // Unhide image elements
+				      largeImage.style.display = 'block';
+
+				      // Show the captured photo
+				      // The in-line CSS rules are used to resize the image
+				      largeImage.src = imageURI;
+				    }
+
+				    // A button will call this function
+				    function capturePhoto() {
+				      // Take picture using device camera and retrieve image as base64-encoded string
+				      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 100,
+				        destinationType: destinationType.DATA_URL });
+				    }
+
+				    // Called if something bad happens.
+				    function onFail(message) {
+				      alert('Failed because: ' + message);
+				    }
+
+				 //    var cameraPopoverHandle = navigator.camera.getPicture(onSuccess, onFail,
+					//      { destinationType: Camera.DestinationType.FILE_URI,
+					//        sourceType: Camera.PictureSourceType.PHOTOLIBRARY });
+
+					//  // Reposition the popover if the orientation changes.
+					// window.onorientationchange = function() {
+					//     var cameraPopoverOptions = new CameraPopoverOptions(0, 0, 100, 100, 0);
+					//     cameraPopoverHandle.setPosition(cameraPopoverOptions);
+					// }
+
+				</script>
+				<a onclick="capturePhoto();" class="button-positive button-block" href="#page_result">Capture Kit</a>
+				<!-- <img style="display:none;width:60px;height:60px;" id="smallImage" src="" /> -->
+			</div>
+			<!-- END PAGE TEST INPUT -->
+
+			<div id="page_result" data-role="page" class="wrapper-bar">
+				<div data-role="content" style="text-align:center" class="scrollable">
+					<br>
+					<p>
+					<br>
+					<br>
+					Positive Dengue Fever
+					</p>
+				</div>
+			</div>	
+
+		</div>
+		<!-- END CONTENT -->
+	</div>	
+	<!-- END MAIN -->
+	
+	<script type="text/javascript" src="js/snap.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+    </body>
+</html>
